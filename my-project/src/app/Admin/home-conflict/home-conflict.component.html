@@ -1,0 +1,43 @@
+<div class="firstd">
+  <h3>Dashboard</h3>
+  <button routerLink="/recordconflicts" class="right-button">Record Conflict</button>
+</div>
+
+<div class="search">
+  <label>
+    <input type="text" placeholder="Search here" />
+    <mat-icon>search</mat-icon>
+  </label>
+</div>
+
+<div>
+  <h2>Conflict Records</h2>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Characters</th>
+        <th>Reasons</th>
+        <th>Solutions</th>
+        <th>Status</th> <!-- Display the Status -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conflict of conflicts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ conflict.characters }}</td>
+        <td>{{ conflict.reasons }}</td>
+        <td>{{ conflict.solutions }}</td>
+        <td>{{ conflict.status }}</td> <!-- Display Status -->
+        <td>
+          <button mat-raised-button color="primary" (click)="onEdit(conflict)">Edit</button>
+          <!-- <button mat-raised-button color="warn" (click)="deleteConflict(conflict.conflict_id)">Delete</button> -->
+          <button (click)="openConfirmDialog(conflict.conflict_id)" class="btn btn-danger btn-sm">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

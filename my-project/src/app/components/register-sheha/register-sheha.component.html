@@ -1,0 +1,56 @@
+
+
+  <div class="firstd">
+    <h3>Dash bord</h3>
+    <button routerLink="/add-sheha" class="right-button">Record Death</button>
+  </div>
+  
+<div class="search">
+    <label>
+      <input type="text" placeholder="Search here" />
+      <!-- <mat-icon>search</mat-icon> -->
+      <!-- <mat-icon>search</mat-icon> -->
+    </label>
+  </div>
+
+  <div>
+    <h2>Citizens</h2>
+
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Shehia name</th>
+          
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sheha of shehas; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ sheha.first_name }}</td>
+          <td>{{ sheha.last_name }}</td>
+          <td>{{ sheha.Shehium.shehia_name}}</td>
+          
+          
+      
+          
+          <td>
+            <!-- <button (click)="deleteBirth(birthRecord.birth_id)" class="btn btn-info btn-sm">
+              <mat-icon>view</mat-icon></button>
+            <button (click)="onedit(birthRecord)" class="btn btn-warning btn-sm">
+              <mat-icon>update</mat-icon>
+            </button>
+            <button (click)="deleteBirth(birthRecord.birth_id)" class="btn btn-danger btn-sm">
+              <mat-icon>delete</mat-icon></button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   
+
+  

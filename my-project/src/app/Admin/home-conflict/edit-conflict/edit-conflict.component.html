@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Edit Conflict Record</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form  (ngSubmit)="updateConflictRecord()" autocomplete="on" class="form">
+        <div class="form-grid">
+          <div class="form-group">
+            <mat-label>Characters Involved</mat-label>
+              <input [(ngModel)]="conflictRecord.characters" name="characters" id="Characters" class="form-control"required>
+            </div>
+
+          <div class="form-group">
+            <mat-label>Reasons</mat-label>
+              <input [(ngModel)]="conflictRecord.reasons" name="characters" id="Reasons" class="form-control"required>
+            </div>
+
+          <div class="form-group">
+           <mat-label>Solutions</mat-label>
+              <input [(ngModel)]="conflictRecord.solutions" name="solutions" id="Solutions" class="form-control"required>
+          </div>
+
+          <div class="form-group">
+              <mat-label>Status</mat-label>
+              <mat-select [(ngModel)]="conflictRecord.status" name="status" id="Status" class="form-control"required>
+                <mat-option value="Solved">Solved</mat-option>
+                <mat-option value="Referred">Referred</mat-option>
+              </mat-select>
+          </div>
+
+          <div class="form-group">
+              <mat-label>User ID</mat-label>
+              <input [(ngModel)]="conflictRecord.user_id" name="user_id" id="User" class="form-control"required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit">Save</button>
+          <button mat-raised-button color="warn" type="button" routerLink="/homeconflicts">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

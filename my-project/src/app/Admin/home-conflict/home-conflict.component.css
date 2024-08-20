@@ -1,0 +1,75 @@
+.firstd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5; /* Optional: to add a background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the container */
+    border-radius: 4px; /* Optional: to add rounded corners */
+  }
+  
+  .firstd h3 {
+    margin: 0;
+  }
+  
+  .firstd button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6200ea; /* Optional: button background color */
+    color: white; /* Optional: button text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Optional: to add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the button */
+    transition: box-shadow 0.3s ease; /* Optional: add transition for hover effect */
+  }
+  
+  .firstd button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  }
+  
+  
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+  }
+  
+  .search label {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+  }
+  
+  .search mat-icon {
+    color: #555;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .success-snackbar {
+    background-color: #4caf50; /* Green */
+    color: #fff;
+  }
+  
+  .error-snackbar {
+    background-color: #f44336; /* Red */
+    color: #fff;
+  }
+  

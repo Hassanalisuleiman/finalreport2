@@ -1,0 +1,285 @@
+<div class="container mt-5">
+  <h2>Generate Letter</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="letterType">Select Letter Type:</label>
+      <select class="form-control" id="letterType" [(ngModel)]="selectedLetterType" name="letterType" required>
+        <option *ngFor="let letter of letterTemplates" [ngValue]="letter">{{ letter.name }}</option>
+      </select>
+    </div>
+    <!-- <div class="form-group">
+      <label for="recipient">To:</label>
+      <select class="form-control" id="recipient" [(ngModel)]="selectedAddressee" (change)="onAddresseeChange()">
+        <option *ngFor="let a of addressees" [ngValue]="a">{{a.organization}} - {{a.poBox}}</option>
+      </select>
+    </div> -->
+
+    <div class="form-group">
+      <label for="organizationName">Organization Name:</label>
+      <input type="text" class="form-control" id="organizationName" [(ngModel)]="organizationName" name="organizationName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="poBox">P.O. Box:</label>
+      <input type="text" class="form-control" id="poBox" [(ngModel)]="poBox" name="poBox" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" class="form-control" id="country" [(ngModel)]="country" name="country">
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" class="form-control" id="date" [(ngModel)]="date" name="date">
+    </div>
+
+    <div class="form-group" *ngIf="selectedLetterType?.name === 'Umiliki wa nyumba/kiwanja'">
+      <label for="additionalName">Additional Name:</label>
+      <input type="text" class="form-control" id="additionalName" [(ngModel)]="additionalName" name="additionalName">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" class="btn btn-primary" [disabled]="!isSubmitted" (click)="onPrint()"><mat-icon>print</mat-icon></button>
+  </form>
+
+  <!-- Include different letter templates -->
+  <div id="passport-request-letter" style="display:none;">
+    <div class="container">
+      <div class="letter-header text-center">
+        <img src="assets/image/logo.jfif" alt="Logo" style="width: 100px;">
+        <h3>SERIKALI YA MAPINDUZI YA ZANZIBAR</h3>
+        <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+        <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+        <!-- <p>Sanduku la Posta 4744</p>
+    <p>Zanzibar - Tanzania</p> -->
+  </div>
+
+  <div class="row">
+    <!-- Left Column -->
+    <div class="col-md-6 text-right">
+      <p>Simu: Wakati wa kujibu Onesha</p>
+      <p>OR/WMGH 'B'</p>
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-md-6 text-right">
+      <p>Sanduku la Posta 4744</p>
+      <p>Zanzibar - Tanzania</p>
+    </div>
+  </div>
+
+  <hr>
+
+      <div class="letter-body">
+        <p><strong>{{organizationName}}</strong></p>
+        <p>{{poBox}}</p>
+        <p>{{country}}</p>
+
+        <h4 class="text-center"><strong>Kuhusu: KUPATIWA PASSPORT</strong></h4>
+
+        <p><strong>NDUGU</strong><span style="text-transform: uppercase; font-weight: bold;">{{ firstName }} {{lastName}}</span></p>
+
+        <p>Naomba uhusike na mada ya hapo juu kama inavyojieleza:</p>
+        <p>Ndugu nilomtaja hapo anatokeya katika shehia yangu. Ndugu huyo ata fika huko kwa madhumuni ya kuja kuomba passport
+           ambayo itamuwezesha kusafiri kwenda nje ya nchi kwa shughuli zake binafsi.</p>
+        <p>Hivyo kwa barua hii nashauri afanyiwe utaratibu wa kisheria unaofaa ambao utamuwezesha kufanikisha ombi lake hilo la kupatiwa passport hiyo.</p>
+
+        <p><strong>Ahsante</strong></p>
+      </div>
+
+      <div class="letter-footer text-center">
+        <p><strong>Sheha Wa Shehia</strong></p>
+        <p><strong>Ya Chukwani</strong></p>
+        <p><strong>Suleiman Mohamed Mwinyi</strong></p>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div id="visa-application-letter" style="display:none;">
+    <div class="container">
+      <div class="letter-header text-center">
+        <img src="assets/image/logo.jfif" alt="Logo" style="width: 100px;">
+        <h3>SERIKALI YA MAPINDUZI YA ZANZIBAR</h3>
+        <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+        <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+        <p>Sanduku la Posta 4744</p>
+        <p>Zanzibar - Tanzania</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p>Simu: Wakati wa kujibu Onesha</p>
+          <p>OR/WMGH 'B'</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><strong>{{date}}</strong></p>
+        </div>
+      </div>
+
+      <div class="letter-body">
+        <p><strong>KAMISHNA WA UHAMIAJI,</strong></p>
+        <p>S.L.P 1354,</p>
+        <p>{{country}}</p>
+
+        <h4 class="text-center"><strong>Kuhusu: MAOMBI YA VISA</strong></h4>
+
+        <p><strong>NDUGU: </strong><span style="text-transform: uppercase; font-weight: bold;">{{ firstName }} {{lastName}}</span></p>
+
+        <p>Naomba uruhusiwe na mada ya hapo juu kama inavyojieleza:</p>
+        <p>Ndugu nilomtaja hapo anatakeya katika shehia yangu. Ndugu huyo ata fika huko kusafiri kwenda nje ya nchi kwa shughuli zake binafsi.</p>
+        <p>Hivyo kwa barua hii nashauri afanyiwe utaratibu wa kisheria unaofaa ambao utamuwezesha kufanikisha ombi lake hilo la kupatiwa visa hiyo.</p>
+
+        <p><strong>Ahsante</strong></p>
+      </div>
+
+      <div class="letter-footer text-center">
+        <p><strong>Sheha Wa Shehia</strong></p>
+        <p><strong>Ya {{shehiaValue}}</strong></p>
+        <p><strong>Suleiman Mohamed Mwinyi</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="uthibitisho wa ukaazi" style="display:none;">
+    <div class="container">
+      <div class="letter-header text-center">
+        <img src="assets/image/logo.jfif" alt="Logo" style="width: 100px;">
+        <h3>SERIKALI YA MAPINDUZI YA ZANZIBAR</h3>
+        <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+        <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+        <p>Sanduku la Posta 4744</p>
+        <p>Zanzibar - Tanzania</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p>Simu: Wakati wa kujibu Onesha</p>
+          <p>OR/WMGH 'B'</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><strong>{{date}}</strong></p>
+        </div>
+      </div>
+
+      <div class="letter-body">
+        <p><strong>KAMISHNA WA UHAMIAJI,</strong></p>
+        <p>S.L.P 1354,</p>
+        <p>{{country}}</p>
+
+        <h4 class="text-center"><strong>Kuhusu: UTHIBITISHO WA UKAAZI</strong></h4>
+
+        <p><strong>NDUGU</strong><span style="text-transform: uppercase; font-weight: bold;">{{ firstName }} {{lastName}}</span></p>
+
+        <p>Naomba uhusike na mada ya hapo juu kama inavyojieleza:</p>
+        <p>Ndugu nilomtaja hapo anatakeya katika shehia yangu. Ndugu huyo ni mkaazi halali ndani ya shehia yangu.</p>
+        <p>Hivyo kwa barua hii nashauri afanyiwe utaratibu wa kisheria unaofaa ambao utamuwezesha kufanikisha ombi lake hilo.</p>
+
+        <p><strong>Ahsante</strong></p>
+      </div>
+
+      <div class="letter-footer text-center">
+        <p><strong>Sheha Wa Shehia</strong></p>
+        <p><strong>Ya Chukwani</strong></p>
+        <p><strong>Suleiman Mohamed Mwinyi</strong></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="kupoteza kitambulisho" style="display:none;">
+    <div class="container">
+      <div class="letter-header text-center">
+        <img src="assets/image/logo.jfif" alt="Logo" style="width: 100px;">
+        <h3>SERIKALI YA MAPINDUZI YA ZANZIBAR</h3>
+        <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+        <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+        <p>Sanduku la Posta 4744</p>
+        <p>Zanzibar - Tanzania</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p>Simu: Wakati wa kujibu Onesha</p>
+          <p>OR/WMGH 'B'</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><strong>{{date}}</strong></p>
+        </div>
+      </div>
+
+      <div class="letter-body">
+        <p><strong>MKURUGENZI,</strong></p>
+        <p><strong>USAJILI WA VITAMBULISHO,</strong></p>
+        <p>S.L.P 1354,</p>
+        <p>{{country}}</p>
+
+        <h4 class="text-center"><strong>Kuhusu: KUPOTELEWA NA KITAMBULISHO CHA TAIFA/MZANZIBARI</strong></h4>
+
+        <p><strong>NDUGU</strong><span style="text-transform: uppercase; font-weight: bold;">{{ firstName }} {{lastName}}</span></p>
+
+        <p>Naomba uhusike na mada ya hapo juu kama inavyojieleza:</p>
+        <p>Ndugu nilomtaja hapo anatakeya katika shehia yangu. Ndugu huyo amepoteza kitambulisho chake cha Mzanzibari/Taifa na kwasasa hana matumaini ya kukiona</p>
+        <p>Hivyo amefika hapa katika ofisi yangu na ameripoti taarifa ya kupoteza kitambulisho hicho</p>
+        <p>Hivyo kwa barua hii nashauri afanyiwe utaratibu wa kisheria unaofaa ambao utamuwezesha kufanikisha ombi lake hilo.</p>
+
+        <p><strong>Ahsante</strong></p>
+      </div>
+
+      <div class="letter-footer text-center">
+        <p><strong>Sheha Wa Shehia</strong></p>
+        <p><strong>Ya Chukwani</strong></p>
+        <p><strong>Suleiman Mohamed Mwinyi</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="umiliki wa nyumba/kiwanja" style="display:none;">
+    <div class="container">
+      <div class="letter-header text-center">
+        <img src="assets/image/logo.jfif" alt="Logo" style="width: 100px;">
+        <h3>SERIKALI YA MAPINDUZI YA ZANZIBAR</h3>
+        <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+        <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+        <p>Sanduku la Posta 4744</p>
+        <p>Zanzibar - Tanzania</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <p>Simu: Wakati wa kujibu Onesha</p>
+          <p>OR/WMGH 'B'</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><strong>{{date}}</strong></p>
+        </div>
+      </div>
+
+      <div class="letter-body">
+        <p><strong>KAMISHNA WA UHAMIAJI,</strong></p>
+        <p>S.L.P 1354,</p>
+        <p>{{country}}</p>
+
+        <h4 class="text-center"><strong>Kuhusu: UTHIBITISHO WA KUMILIKI NYUMBA/KIWANJA</strong></h4>
+
+        <p><strong>NDUGU</strong><span style="text-transform: uppercase; font-weight: bold;">{{ firstName }} {{lastName}}</span></p>
+
+        <p>Naomba uhusike na mada ya hapo juu kama inavyojieleza:</p>
+        <p>Ndugu nilomtaja hapo juu anamiliki kiwanja/nyumba ambacho kipo katika shehia yangu</p>
+        <p>kiwanja hicho amekinunuwa/amepewa na ndugu <span style="text-transform: uppercase; font-weight: bold;">{{ additionalName || '......................' }}</span> kwa hivi sasa anaomba kupatiwa kibali cha ujenzi wa nyumba </p>
+        <p>Hivyo kwa barua hii nashauri ombi lake hilo kuzingatiwa kwa mujibu wa sheria iwapo taasisi husika itajiridhisha.</p>
+
+        <p><strong>Ahsante</strong></p>
+      </div>
+
+      <!-- <div class="letter-footer text-center">
+        <p><strong>Sheha Wa Shehia</strong></p>
+        <p *ngIf="sheha?.first_name && sheha?.Shehium?.shehia_name">
+          <h2><strong> Ya {{ sheha.Shehium.shehia_name }}</strong></h2>
+        <p><strong><h2>{{ sheha.first_name }}</h2></strong></p>
+      </div> -->
+    </div>
+  </div>
+</div>

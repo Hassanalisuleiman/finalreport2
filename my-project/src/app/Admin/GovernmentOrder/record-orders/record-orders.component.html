@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Create a New Government Order</h2>
+    <form (ngSubmit)="createOrder()">
+      <div class="form-group">
+        <label for="shehiaId">Shehia ID:</label>
+        <input type="text" id="shehiaId" class="form-control" [(ngModel)]="newOrder.shehia_id" name="shehiaId" required>
+      </div>
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" class="form-control" [(ngModel)]="newOrder.user_id" name="userId" required>
+      </div>
+      <div class="form-group">
+        <label for="orderType">Order Type:</label>
+        <input type="text" id="orderType" class="form-control" [(ngModel)]="newOrder.order_type" name="orderType" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="order_description" class="form-control" [(ngModel)]="newOrder.order_description" name="order_description" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Order</button>
+    </form>
+  
+    <h2>All Citizen Orders</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Order Type</th>
+          <th>Citizen Name</th>
+          <th>Street</th>
+          <th>House No</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.governmentorder.order_type }}</td>
+          <td>{{ order.User.first_name }} {{ order.User.last_name }}</td>
+          <td>{{ order.User.street }}</td>
+          <td>{{ order.User.house_no }}</td>
+          <td>
+            <span *ngIf="order.received">Received on {{ order.date_received | date }}</span>
+            <span *ngIf="!order.received">Not Received</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

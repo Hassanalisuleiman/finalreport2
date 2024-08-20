@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Citizen Order Tracking</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Order Type</th>
+          <th>Received</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of citizenOrders">
+          <td>{{ order.User.first_name }} {{ order.User.last_name }}</td>
+          <td>{{ order.governmentorder.order_type }}</td>
+          <td>{{ order.received ? 'Yes' : 'No' }}</td>
+          <td>
+            <button (click)="updateCitizenOrder(order.id, true)" class="btn btn-success">Mark as Received</button>
+            <button (click)="updateCitizenOrder(order.id, false)" class="btn btn-warning">Mark as Not Received</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

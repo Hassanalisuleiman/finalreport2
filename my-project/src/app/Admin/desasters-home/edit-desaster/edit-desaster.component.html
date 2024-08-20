@@ -1,0 +1,19 @@
+<div class="container" *ngIf="disasterRecord">
+    <h2>Edit Disaster Record</h2>
+    <form (ngSubmit)="updateDisaster()">
+      <div class="form-group">
+        <label for="userId">User Id</label>
+        <input [(ngModel)]="disasterRecord.user_id" name="user_id" id="userId" type="number" class="form-control" placeholder="Enter Citizen ID" required>
+      </div>
+      <div class="form-group">
+        <label for="cause">Cause</label>
+        <input [(ngModel)]="disasterRecord.cause" name="cause" id="cause" type="text" class="form-control" placeholder="Enter cause" required>
+      </div>
+      <div class="form-group">
+        <label for="effect">Effect</label>
+        <input [(ngModel)]="disasterRecord.effect" name="effect" id="effect" type="text" class="form-control" placeholder="Enter effect" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+  

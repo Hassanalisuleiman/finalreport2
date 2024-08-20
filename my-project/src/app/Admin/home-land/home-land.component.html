@@ -1,0 +1,59 @@
+<div class="firstd">
+    <h3>Dash bord</h3>
+    <button routerLink="/landrecord" class="right-button">Land record</button>
+  </div>
+  
+<div class="search">
+    <label>
+      <input type="text" placeholder="Search here" />
+      <mat-icon>search</mat-icon>
+    </label>
+  </div>
+
+  <div>
+    <h2>Land information</h2>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>Mhaulishaji</th>
+          <th>Anaehaulisha</th>
+          <th>kaskazi</th>
+          <th>Kusini</th>
+          <th>Mashariki</th>
+          <th>Magharibi</th>
+          <th>Form namba</th>
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let landRecord of landRecords; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ landRecord.from_owner }}</td>
+          <td>{{ landRecord.to_owner }}</td>
+          <td>{{ landRecord.boundary_north}}</td>
+          <td>{{ landRecord.boundary_south }}</td>
+          <td>{{ landRecord.boundary_east }}</td>
+          <td>{{ landRecord.boundary_west }}</td>
+          <td>{{ landRecord.form_number }}</td>
+          <!-- <td>{{ landRecord.user_id }}</td> -->
+          
+      
+          
+          <td>
+            <button  class="btn btn-info btn-sm">
+              <mat-icon>view</mat-icon></button>
+            <button (click)="onEditLand(landRecord)" class="btn btn-warning btn-sm">
+              <mat-icon>update</mat-icon>
+            </button>
+            <!-- <button (click)="deleteLandd(landRecord.land_id)" class="btn btn-danger btn-sm">
+              <mat-icon>delete</mat-icon></button> -->
+              <button (click)="openConfirmDialog(landRecord.land_id)" class="btn btn-danger btn-sm">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,17 @@
+<div *ngIf="isWelcomeVisible" class="welcome-container">
+  <div class="welcome-card">
+    <img src="assets/image/logo.jfif" alt="Logo" class="logo">
+    <h1>Welcome, {{ firstName }}!</h1>
+    <p class="welcome-message">
+      We're thrilled to have you back. Explore your dashboard to manage your tasks efficiently.
+    </p>
+    <h2>Your shehia is {{shehiaName}}</h2>
+    <!-- <p *ngIf="sheha?.first_name && sheha?.Shehium?.shehia_name">
+      <h2>Your Sheha is: {{ sheha.first_name }}</h2>
+      <h2>Your Shehia is: {{ shehiaName }}</h2> -->
+  
+    <button mat-raised-button color="primary" (click)="okClicked()">
+      Ok
+    </button>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="firstd">
+    <h3>Dash bord</h3>
+    <button routerLink="/recorddeath" class="right-button">Record Death</button>
+  </div>
+  
+<div class="search">
+    <label>
+      <input type="text" placeholder="Search here" />
+      <mat-icon>search</mat-icon>
+    </label>
+  </div>
+
+  <div>
+    <h2>Death information</h2>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>Corpse Name</th>
+          <th>Date</th>
+          <th>Causes</th>
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deathRecord of deathRecords; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ deathRecord.corpse_name }}</td>
+          <td>{{ deathRecord.date_of_death | date }}</td>
+          <td>{{ deathRecord.causes_of_death }}</td>
+          <!-- <td>{{ deathRecord.user_id }}</td> -->
+          
+      
+          
+          <td>
+            <button (click)="deleteDeath(deathRecord.death_id)" class="btn btn-info btn-sm">
+              <mat-icon>view</mat-icon></button>
+            <button (click)="onEdit(deathRecord)" class="btn btn-warning btn-sm">
+              <mat-icon>update</mat-icon>
+            </button>
+              <button (click)="openConfirmDialog(deathRecord.death_id)" class="btn btn-danger btn-sm">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

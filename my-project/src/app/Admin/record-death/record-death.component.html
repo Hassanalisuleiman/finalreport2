@@ -1,0 +1,31 @@
+<div class="container">
+    <mat-card>
+      <h2>Record Death</h2>
+      <form [formGroup]="submitForm" class="form" (ngSubmit)="onSave()">
+        <mat-form-field class="form-field">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="corpse_name" type="text" placeholder="inter corpse name">
+        </mat-form-field>
+        
+        <mat-form-field class="form-field">
+          <mat-label for="date-of-birth">Date</mat-label>
+          <input matInput formControlName="date_of_death" type="date" placeholder="date-of-death">
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Causes of Death</mat-label>
+          <input matInput formControlName="causes_of_death" type="text" placeholder="inter causes_of_death">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label for="user">User id</mat-label>
+          <input matInput formControlName="user_id" type="number" placeholder="inter user id">
+        </mat-form-field>
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="warn" type="button" routerLink="/homedeath">Cancel</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+
+

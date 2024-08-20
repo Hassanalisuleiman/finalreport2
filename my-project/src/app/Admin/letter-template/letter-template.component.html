@@ -1,0 +1,80 @@
+<div class="container">
+  <h1>Generate Letter</h1>
+
+  <!-- Letter Type Selection -->
+  <label for="letterType">Select Letter Type:</label>
+  <select id="letterType" [(ngModel)]="selectedLetterType" (change)="onLetterTypeChange()">
+    <option *ngFor="let type of letterTypes" [value]="type.id">{{ type.name }}</option>
+  </select>
+
+  <!-- Recipient Selection -->
+  <label for="recipient">Select Recipient:</label>
+  <select id="recipient" [(ngModel)]="selectedRecipientId" (change)="onRecipientChange()">
+    <option *ngFor="let recipient of recipients" [value]="recipient.id">{{ recipient.organization }}</option>
+  </select>
+
+  <!-- Display Recipient Details -->
+  <div *ngIf="selectedRecipient">
+    <p><strong>Seniority:</strong> {{ selectedRecipient.seniority }}</p>
+    <p><strong>Organization:</strong> {{ selectedRecipient.organization }}</p>
+    <p><strong>Postal Address:</strong> {{ selectedRecipient.postal_address }}</p>
+    <p><strong>Country:</strong> {{ selectedRecipient.country }}</p>
+    <p><strong>Date:</strong> {{ currentDate }}</p>
+  </div>
+
+  <!-- Display and Print the Letter -->
+  <div [ngSwitch]="selectedLetterType">
+    <!-- Letter Type 1 -->
+    <div *ngSwitchCase="'1'" class="letter">
+      <div class="header">
+        <div class="logo">
+          <img [src]="'assets/logo.png'" alt="Logo" class="logo-img">
+        </div>
+        <div class="header-details">
+          <p>SERIKALI YA MAPINDUZI YA ZANZIBAR</p>
+          <p>OFISI YA RAIS, TAWALA ZA MIKOA, SERIKALI ZA MITAA NA IDARA MAALUM ZA SMZ</p>
+          <p>OFISI YA SHEHA SHEHIA YA CHUKWANI WILAYA YA MAGHARIBI B</p>
+          <p>Sanduku la Posta 4744</p>
+          <p>Zanzibar - Tanzania</p>
+        </div>
+      </div>
+      <div class="letter-details">
+        <p>Simu :</p>
+        <p>Wakati wa kujibu Onesha</p>
+        <p>OR/WMGH 'B'</p>
+      </div>
+      <div class="date">
+        <p>{{ currentDate }}</p>
+      </div>
+      <div class="recipient">
+        <p>{{ selectedRecipient.seniority }}</p>
+        <p>{{ selectedRecipient.postal_address }}</p>
+        <p>{{ selectedRecipient.country }}</p>
+      </div>
+      <div class="subject">
+        <p>Kuhusu: KUPATIWA PASSPORT</p>
+      </div>
+      <div class="content">
+        <p>NDUGU {{ citizen.name }},</p>
+        <p>Naomba uhakika na mada ya hapo juu kama inavyojieleza. {{ citizen.name }} aliondokea katika shehia yangu. Ndugu huyo atafika huko kusafiri kwenda nje ya nchi kwa shughuli zake binafsi.</p>
+        <p>Hivyo kwa barua hii nashauri afanyiwe utaratibu wa kisheria unaofaa ambao utamuwezesha kufanikisha ombi lake hilo la kupatiwa passport hiyo.</p>
+        <p>Ahsante.</p>
+      </div>
+      <div class="signature">
+        <p>Sheha Wa Shehia,</p>
+        <p>Ya Chukwani,</p>
+        <p>Suleiman Mohamed Mwinyi</p>
+      </div>
+    </div>
+
+    <!-- Letter Type 2 -->
+    <div *ngSwitchCase="'2'" class="letter">
+      <!-- Different template for another letter type -->
+      <!-- Add your second letter template here -->
+    </div>
+
+    <!-- Add more letter types as needed -->
+  </div>
+
+  <button (click)="printLetter()">Print Letter</button>
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+    <form [formGroup]="submitForm" autocomplete="on" class="form" (ngSubmit)="onSave()">
+      <h2>Citizen Registration</h2>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="fname" placeholder="First Name" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lname" placeholder="Last Name" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input matInput formControlName="street" placeholder="Street">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>House Number</mat-label>
+          <input matInput formControlName="house_no" placeholder="House Number">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="M">Male</mat-option>
+            <mat-option value="F">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phone_no" placeholder="Phone Number">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Zan ID</mat-label>
+          <input matInput formControlName="zan_id" placeholder="Zan ID">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Tz ID</mat-label>
+          <input matInput formControlName="tz_id" placeholder="Tz ID">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date_of_birth" placeholder="Date of Birth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <label>Photo</label>
+        <input type="file" accept="image/*" (change)="onFileChange($event)">
+      </div>
+      <div class="form-actions">
+        <button mat-raised-button color="primary" [disabled]="submitForm.invalid" type="submit">Save</button>
+        <button mat-raised-button color="warn" type="reset"routerLink="">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-card>
+    <h2>Birth Registration</h2>
+    <form [formGroup]="submitForm" class="form" (ngSubmit)="onSave()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>User ID</mat-label>
+        <input matInput formControlName="user_id" type="number" placeholder="Enter user ID">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Father Name</mat-label>
+        <input matInput formControlName="father_name" type="text" placeholder="Enter father's name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Mother Name</mat-label>
+        <input matInput formControlName="mother_name" type="text" placeholder="Enter mother's name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Child Name</mat-label>
+        <input matInput formControlName="child_name" type="text" placeholder="Enter child's name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="date_of_birth" type="date" placeholder="Enter date of birth">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Merit Status</mat-label>
+        <input matInput formControlName="merit_status" type="text" placeholder="Enter merit status">
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="warn" type="button" routerLink="/birthhome">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

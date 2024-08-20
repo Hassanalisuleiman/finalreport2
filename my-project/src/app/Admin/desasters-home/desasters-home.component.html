@@ -1,0 +1,48 @@
+<div class="firstd">
+    <h3>Dash bord</h3>
+    <button routerLink="/desasters" class="right-button">Record Disaster</button>
+  </div>
+  
+<div class="search">
+    <label>
+      <input type="text" placeholder="Search here" />
+      <mat-icon>search</mat-icon>
+    </label>
+  </div>
+
+  <div>
+    <h2>Disaster information</h2>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>Course</th>
+          <th>Effect</th>
+          <th>Action</th>
+
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let disaster of disasters; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ disaster .cause }}</td>
+          <td>{{ disaster .effect }}</td>
+          
+      
+          
+          <td>
+            <a [routerLink]="['/citizens', disaster .citizen_id]" class="btn btn-info btn-sm">View</a>
+            <button (click)="onEdit(disaster)" class="btn btn-warning btn-sm">
+              <mat-icon>update</mat-icon>
+            </button>
+            <!-- <button (click)="deleteDisaster(disaster .disaster_id)" class="btn btn-danger btn-sm">Delete</button> -->
+            <button (click)="openConfirmDialog(disaster .disaster_id)" class="btn btn-danger btn-sm">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

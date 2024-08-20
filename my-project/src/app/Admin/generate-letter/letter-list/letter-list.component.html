@@ -1,0 +1,42 @@
+<h2>Letter Management</h2>
+
+  <!-- Letters Table -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>User Name</th>
+        <th>Phone Number</th>
+        <th>House Number</th>
+        <th>Letter Type</th>
+        <th>Organization Name</th>
+        <th>Date</th>
+        <th>Actions</th>
+        <!-- <th>P.O. Box</th>
+        <th>Country</th> -->
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let letter of printedLetters; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ letter.User.first_name }} {{ letter.User.last_name }}</td>
+        <td>{{ letter.User.phone_no }}</td>
+        <td>{{ letter.User.house_no }}</td>
+        <td>{{ letter.letterType }}</td>
+        <td>{{ letter.organizationName }}</td>
+        <td>{{ letter.date | date:'mediumDate' }}</td>
+        
+        
+        <td>
+            
+            <button class="btn btn-danger btn-sm" *ngIf="letter.letter_id !== undefined" (click)="openConfirmDialog(letter.letter_id)">Delete</button>
+
+            <!-- <button class="btn btn-danger btn-sm" (click)="openConfirmDialog(letter.letter_id)">Delete</button> -->
+          <!-- <button class="btn btn-info btn-sm" (click)="viewLetter(letter.letter_id)">View</button>
+          <button class="btn btn-warning btn-sm" (click)="updateLetter(letter.letter_id, letter)">Update</button> -->
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>

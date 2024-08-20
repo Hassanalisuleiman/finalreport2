@@ -1,0 +1,74 @@
+<div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Edit Land Record</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="editForm" (ngSubmit)="updateLand()" autocomplete="on" class="form">
+          <div class="form-grid">
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>From Owner</mat-label>
+                <input matInput formControlName="from_owner" placeholder="From Owner" required>
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>To Owner</mat-label>
+                <input matInput formControlName="to_owner" placeholder="To Owner" required>
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Boundary North</mat-label>
+                <input matInput formControlName="boundary_north" placeholder="Boundary North">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Boundary South</mat-label>
+                <input matInput formControlName="boundary_south" placeholder="Boundary South">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Boundary East</mat-label>
+                <input matInput formControlName="boundary_east" placeholder="Boundary East">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Boundary West</mat-label>
+                <input matInput formControlName="boundary_west" placeholder="Boundary West">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>Form Number</mat-label>
+                <input matInput formControlName="form_number" placeholder="Form Number">
+              </mat-form-field>
+            </div>
+  
+            <div class="form-group">
+              <mat-form-field appearance="outline">
+                <mat-label>User ID</mat-label>
+                <input matInput formControlName="user_id" placeholder="User ID">
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit">Update</button>
+            <button mat-raised-button color="warn" type="reset">Reset</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,53 @@
+<div class="firstd">
+    <h3>Dash bord</h3>
+    <button routerLink="/birthreg" class="right-button">Add Child</button>
+  </div>
+  
+<div class="search">
+    <label>
+      <input type="text" placeholder="Search here" />
+      <mat-icon>search</mat-icon>
+    </label>
+  </div>
+
+
+  <div>
+    <h2>child information</h2>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>Father Name</th>
+          <th>Mother Name</th>
+          <th>Child name</th>
+          <th>Date of Birth</th>
+          <th>Parent Status</th>
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let birthRecord of birthRecords; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ birthRecord.father_name }}</td>
+          <td>{{ birthRecord.mother_name }}</td>
+          <td>{{ birthRecord.child_name}}</td>
+          <td>{{ birthRecord.date_of_birth | date }}</td>
+          <td>{{ birthRecord.merit_status }}</td>
+          
+      
+          
+          <td>
+            <button (click)="deleteBirth(birthRecord.birth_id)" class="btn btn-info btn-sm">
+              <mat-icon>view</mat-icon></button>
+            <button (click)="onEdit(birthRecord)" class="btn btn-warning btn-sm">
+              <mat-icon>update</mat-icon>
+            </button>
+            <button (click)="openConfirmDialog(birthRecord.birth_id)" class="btn btn-danger btn-sm">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

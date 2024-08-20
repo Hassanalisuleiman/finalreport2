@@ -1,0 +1,26 @@
+<div class="container">
+  <mat-card>
+    <h2>Disasters</h2>
+    <form [formGroup]="submitForm" autocomplete="on" class="form" (ngSubmit)="onSave()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Citizen Id</mat-label>
+        <input matInput formControlName="user_id" type="number" placeholder="Enter Citizen ID">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cause</mat-label>
+        <input matInput formControlName="cause" type="text" placeholder="Enter cause">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Effect</mat-label>
+        <input matInput formControlName="effect" type="text" placeholder="Enter effect">
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="warn" type="button" routerLink="/desastershome">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

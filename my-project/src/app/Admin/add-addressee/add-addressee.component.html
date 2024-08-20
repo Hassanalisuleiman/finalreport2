@@ -1,0 +1,15 @@
+<!-- src/app/components/addressee/addressee.component.html -->
+<div class="container">
+  <h2>Add Addressee</h2>
+  <form [formGroup]="addresseeForm" (ngSubmit)="onSubmit()">
+    <label>Name</label>
+    <input formControlName="name" type="text" required>
+    <label>Organization</label>
+    <input formControlName="organization" type="text" required>
+    <label>Country</label>
+    <input formControlName="country" type="text" required>
+    <label>Date</label>
+    <input formControlName="date" type="date" required>
+    <button type="submit" [disabled]="addresseeForm.invalid">Submit</button>
+  </form>
+</div>

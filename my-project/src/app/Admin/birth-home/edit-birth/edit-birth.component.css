@@ -1,0 +1,12 @@
+/* Snackbar success style */
+.success-snackbar {
+    background-color: #4caf50; /* Green */
+    color: white;
+  }
+  
+  /* Snackbar error style */
+  .error-snackbar {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  

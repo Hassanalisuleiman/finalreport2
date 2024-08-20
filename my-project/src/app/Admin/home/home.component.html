@@ -1,0 +1,79 @@
+
+
+<div class="firstd">
+  <h3>Dashboard</h3>
+  <button (click)="onAddPerson()" class="right-button">Add Person</button>
+</div>
+
+<div class="card-container">
+  <div class="card card-users">
+    <div class="card-body">
+      <h5 class="card-title">Total Users</h5>
+      <p class="card-text">1234</p>
+    </div>
+  </div>
+
+  <div class="card card-active-users">
+    <div class="card-body">
+      <h5 class="card-title">Active Users</h5>
+      <p class="card-text">567</p>
+    </div>
+  </div>
+
+  <div class="card card-admins">
+    <div class="card-body">
+      <h5 class="card-title">Total Admins</h5>
+      <p class="card-text">12</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="search">
+  <label>
+    <input  type="text" placeholder="Search here" />
+    <mat-icon>search</mat-icon>
+  </label>
+</div>
+
+
+
+<div class="container mt-4">
+  <div>
+    <h2>Citizens</h2>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>S/N</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>House Number</th>
+          <th>Phone Number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.house_no }}</td>
+          <td>{{ user.phone_no }}</td>
+          <!-- <td>{{ users.phone_no }}</td>
+          <td>{{ users.zan_id }}</td>
+          <td>{{ users.tz_id }}</td>
+          <td>{{ users.date_of_birth | date }}</td> -->
+          <td>
+            <button (click)="deleteCitizen(user.user_id)" class="btn btn-info btn-sm"><mat-icon>view</mat-icon></button>
+            <button  (click)="editCitizen(user.user_id)"  class="btn btn-warning btn-sm"><mat-icon>update</mat-icon></button>
+            <button (click)="deleteCitizen(user.user_id)" class="btn btn-danger btn-sm"><mat-icon>delete</mat-icon></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

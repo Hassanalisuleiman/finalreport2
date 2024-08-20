@@ -1,0 +1,123 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <div class="logo-container">
+      <img src="assets/image/logo.jfif" alt="Logo" class="logo">
+      <span class="system-name">Shehia System</span>
+    </div>
+    <mat-nav-list>
+      <!-- Admin and Sheha Links -->
+      <a *ngIf="role === 'admin' || role === 'sheha'" mat-list-item routerLink="admin-dashboard">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </a>
+
+      <!-- Admin Only Links -->
+      <mat-expansion-panel *ngIf="role === 'admin'">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>mail</mat-icon>
+            <span>Manage orders</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <a mat-list-item routerLink="recordorder">
+            <mat-icon>description</mat-icon>
+            <span>Create orders</span>
+          </a>
+          <a mat-list-item routerLink="citizenfeedback">
+            <mat-icon>description</mat-icon>
+            <span>Feedback</span>
+          </a>
+          <a mat-list-item routerLink="citizenviews">
+            <mat-icon>description</mat-icon>
+            <span>Citizen views 3</span>
+          </a>
+        </mat-list>
+      </mat-expansion-panel>
+
+
+
+      <mat-expansion-panel *ngIf="role === 'sheha'|| role==='citizen'">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>Letter</mat-icon>
+            <span>Letter Management</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <a *ngIf="role === 'sheha' || role === 'citizen'" mat-list-item routerLink="generate">
+            <mat-icon>create</mat-icon>
+            <span>Generate Letter</span>
+          </a>
+          <a *ngIf="role === 'sheha'" mat-list-item routerLink="letterlist">
+            <mat-icon>gavel</mat-icon>
+            <span>Letter List </span>
+          </a>
+        </mat-list>
+      </mat-expansion-panel>
+
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="registersheha">
+        <mat-icon>person_add</mat-icon>
+        <span>Add Sheha</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="homeAddressee">
+        <mat-icon>people</mat-icon>
+        <span>Addressee</span>
+      </a>
+      <a *ngIf="role === 'admin' || role === 'sheha'" mat-list-item routerLink="birthhome">
+        <mat-icon>child_care</mat-icon>
+        <span>Birth Registration</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="homedeath">
+        <mat-icon>sentiment_very_dissatisfied</mat-icon>
+        <span>Deaths</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="desastershome">
+        <mat-icon>warning</mat-icon>
+        <span>Disasters</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="LetterTemplate">
+        <mat-icon>format_list_bulleted</mat-icon>
+        <span>Letter Template</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="homeLand">
+        <mat-icon>terrain</mat-icon>
+        <span>Land record</span>
+      </a>
+      <a *ngIf="role === 'admin'" mat-list-item routerLink="homeconflicts">
+        <mat-icon>gavel</mat-icon>
+        <span>Conflict record</span>
+      </a>
+      
+      <!-- Sheha and Citizen Links -->
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Dashboard</span>
+      <span class="spacer"></span>
+      <span>Welcome {{ userName }}!</span> <!-- Bind the userName property here -->
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="logoutUser()">Logout</button>
+      </mat-menu>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

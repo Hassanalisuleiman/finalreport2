@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Conflict Record Registration</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="submitForm" (ngSubmit)="onSubmit()" autocomplete="on" class="form">
+        <div class="form-grid">
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Characters Involved</mat-label>
+              <input matInput formControlName="characters" placeholder="Characters Involved" required>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Reasons</mat-label>
+              <input matInput formControlName="reasons" placeholder="Reasons" required>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Solutions</mat-label>
+              <input matInput formControlName="solutions" placeholder="Solutions" required>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>User ID</mat-label>
+              <input matInput formControlName="user_id" placeholder="User ID" required>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status" placeholder="Select Status">
+                <mat-option value="Solved">Solved</mat-option>
+                <mat-option value="Referred">Referred</mat-option>
+                <mat-option value="Pending">Pending</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="submitForm.invalid">Submit</button>
+          <button mat-raised-button color="warn" type="reset">Reset</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

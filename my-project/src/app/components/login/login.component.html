@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <img src="assets/image/logo.jfif" class="card-img-top" alt="Header Image" style="width: 30%; height: auto; max-height: 100px; margin-left:160px;">
+        <div class="card-body">
+          <h2 class="card-title text-center">Login</h2>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" [(ngModel)]="credentials.username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="credentials.password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+              Login
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <a routerLink="/register">Don't have an account? Register here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spinner container -->
+<div *ngIf="loading" class="spinner-overlay">
+  <mat-spinner></mat-spinner>
+</div>
